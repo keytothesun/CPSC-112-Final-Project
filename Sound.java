@@ -46,7 +46,7 @@ public class Sound {
     	RingBuffer buffer = new RingBuffer(length);
     	
     	for (int i = 0; i < length; i++) {
-    		buffer.enqueue(init[i]);
+        	buffer.enqueue(0.0);
     	}
     	
     	this.buffer = buffer;
@@ -75,6 +75,10 @@ public class Sound {
 
     // return the current sample
     public double sample() {
+    	if (buffer == null) {
+    		return 0.0;
+    		
+    	}
         return buffer.peek();
         
     }
